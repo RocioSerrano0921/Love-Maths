@@ -48,8 +48,10 @@ function checkAnswers() {
     let isCorrect = userAnswer === calculatedAnswer[0]; //Check if the user answer is equal to the correct answer (remember it is an array, so we have to be sure that we are comparing with the right element within the array)
     if (isCorrect) {
         alert(`Congratulation!!! ${userAnswer} is correct! :D`);
+        incrementScore();
     } else {
         alert(`Awww.... you answered ${userAnswer}. The correct answer is ${calculatedAnswer[0]}`);
+        incrementWrongAnswer();
     }
     runGame(calculatedAnswer[1]); //Run the game again with the same game type (addition, subtraction, multiplication...etc) that we have just played
 }
@@ -71,9 +73,24 @@ function calculateCorrectAnswer() {
     }
 }
 
-function incrementScore() {}
+/**
+ * Gets the current score from the DOM and increments it by 1
+ */
+function incrementScore() {
+    //Get the current score from the DOM, increment it by 1 and set it back to the DOM
+    let oldScore = parseInt(document.getElementById('score').innerText);
+    document.getElementById('score').innerText = ++oldScore;
+    //The ++oldScore is the same as oldScore + 1, but it is a shorthand way to write it
+}
 
-function incrementWrongAnswer() {}
+/**
+ * Gets the current tally of the incorrect answer from the DOM and increments it by 1
+ */
+function incrementWrongAnswer() {
+    //Get the current score from the DOM, increment it by 1 and set it back to the DOM
+    let oldScore = parseInt(document.getElementById('incorrect').innerText);
+    document.getElementById('incorrect').innerText = ++oldScore;
+}
 
 //Display questions functions
 //Display the addition question in the DOM (screen)
