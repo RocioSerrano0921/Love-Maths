@@ -16,6 +16,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    document.getElementById('answer-box').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            checkAnswers();
+        }
+    });
+
     runGame('addition'); // Start the game with addition
 });
 
@@ -26,6 +33,9 @@ document.addEventListener('DOMContentLoaded', function () {
  * and after the user answer has been processed
  */
 function runGame(gameType) {
+    document.getElementById('answer-box').value = ''; // Clear the answer box
+    document.getElementById('answer-box').focus(); // Focus on the answer box, with the cursor placed inside
+
     // Generates two random numbers between 1 and 25
     let num1 = Math.floor(Math.random() * 25) + 1;
     let num2 = Math.floor(Math.random() * 25) + 1;
