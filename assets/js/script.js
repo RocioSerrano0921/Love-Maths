@@ -46,6 +46,8 @@ function runGame(gameType) {
         displayMultiplyQuestion(num1, num2);
     } else if (gameType === 'subtract') {
         displaySubtractQuestion(num1, num2);
+    } else if (gameType === 'division') {
+        displayDivisionQuestion(num1, num2);
     } else {
         alert(`Unknown game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`; //Stop the game from running and whatever we supply an error message here it will print that in the console for debugging
@@ -85,6 +87,8 @@ function calculateCorrectAnswer() {
         return [operand1 * operand2, 'multiply'];
     } else if (operator === '-') {
         return [operand1 - operand2, 'subtract'];
+    } else if (operator === '/') {
+        return [operand1 / operand2, 'division'];
     } else {
         alert(`Unimplement operator ${operator}`);
         throw `Unimplement operator ${operator}. Aborting!`;
@@ -131,4 +135,13 @@ function displayMultiplyQuestion(operand1, operand2) {
     document.getElementById('operand1').textContent = operand1; //the operand1 or 2 (which are generated randomly in the runGAme function) give the document.getElementById().textContent their value, and writes them on their place in the DOM
     document.getElementById('operand2').textContent = operand2; //in this case where the id = operand 1 and id=operand2, i mean, here we are not declaring a variable, we are writing their value
     document.getElementById('operator').textContent = 'x';
+}
+
+function displayDivisionQuestion(operand1, operand2) {
+    let moduleNum = Math.floor(Math.random() * 10) + 1;
+    operand1 = operand2 * operand1;
+
+    document.getElementById('operand1').textContent = operand1;
+    document.getElementById('operand2').textContent = operand2;
+    document.getElementById('operator').textContent = '/';
 }
